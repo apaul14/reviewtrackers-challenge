@@ -21,8 +21,8 @@ const ReviewCard = ({ reviewDetails }) => {
           <h2>{place}</h2>
           <div className="rating">
             {
-              ratingArray.length ? ratingArray.map(element => (
-                <img className="star-icon" src={starIcon} alt="star rating"></img>
+              ratingArray.length ? ratingArray.map((element, idx) => (
+                <img key={idx} className="star-icon" src={starIcon} alt="star rating"></img>
               )) : null
             }
           </div>
