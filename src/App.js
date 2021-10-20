@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import { useState,useEffect } from 'react'
+
+import ReviewList from './components/ReviewList';
+// const reviews = require('../public/reviewData.json')
+// console.log(reviews)
+
+import axios from 'axios'
+
+const App = () => {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const getData = async() => {
+      try {
+        const reviewsData = await axios.get('./reviewData.json')
+        setData(reviewsData.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getData()
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="header">Reviews</header>
+        <main className="body review-list">
+          <ReviewList data={data}/>
+        </main>
     </div>
   );
 }

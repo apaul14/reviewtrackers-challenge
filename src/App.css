@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+  box-sizing: border-box;;
+	}
+
+.header {
+  background-color: blue;
+  height: 45px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main {
+  background-color: #8D95A3;
+  height: 100%; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.review-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card-wrap-outer {
+  /* flex-direction: column; */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  background-color: white;
+  width: 25%;
+  margin: 40px;
+  padding: 15px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.App-link {
-  color: #61dafb;
+.card-wrap-inner {
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-upper {
+  align-self: flex-start;
+}
+
+.star-icon {
+  /* flex-direction: row; */
+  height: 18px;
+  width: 18px;
+}
+
+.content {
+  padding-top: 15px;
+  /* align-self: flex-start; */
+  justify-content: flex-start;
+}
+
+.card-lower {
+  display: flex;
+  align-self: flex-end;
+  justify-content: space-between;
 }
