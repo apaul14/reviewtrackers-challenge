@@ -1,8 +1,10 @@
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { useState,useEffect } from 'react'
 
 import ReviewList from './components/ReviewList';
+import ReviewDetail from './components/ReviewDetail';
 // const reviews = require('../public/reviewData.json')
 // console.log(reviews)
 
@@ -12,7 +14,7 @@ const App = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    const getData = async() => {
+    const fetchData = async() => {
       try {
         const reviewsData = await axios.get('./reviewData.json')
         setData(reviewsData.data)
@@ -20,16 +22,24 @@ const App = () => {
         console.error(error)
       }
     }
-    getData()
+    fetchData()
   }, [])
 
   return (
-    <div className="App">
-      <header className="header">Reviews</header>
-        <main className="body review-list">
-          <ReviewList data={data}/>
+    <Router>
+      <div className="App">
+        <header className="header">Reviews</header>
+          <main className="body review-list">
+          <Switch>
+            <Route exact path="/reviews/:id"> <ReviewDetail/> </Route>
+            <Route path="/"> <ReviewList data={data}/>  </Route>
+            
+              {/* <ReviewList data={data}/> */}
+          </Switch>  
+            
         </main>
-    </div>
+      </div>
+    </Router>
   );
 }
 
