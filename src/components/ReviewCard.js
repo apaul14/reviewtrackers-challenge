@@ -1,10 +1,12 @@
-// import useState from 'react'
+import { useState } from 'react'
 import { useHistory } from 'react-router-dom';
+
+import ResponseModal from './ResponseModal'
 
 import starIcon from '../star.png'
 
 
-const ReviewCard = ({ reviewData }) => {
+const ReviewCard = ({ reviewData, showResponseButton }) => {
   const { 
     id,
     author, 
@@ -13,6 +15,8 @@ const ReviewCard = ({ reviewData }) => {
     published_at, 
     rating 
   } = reviewData
+
+  const [showModal, setModalState] = useState(false)
 
   const history = useHistory()
   const handleOnClick = () => {
@@ -42,6 +46,14 @@ const ReviewCard = ({ reviewData }) => {
         <div className="card-lower">
           <p>{author}</p>
           <p>{formatedDate}</p>
+          {
+            showResponseButton && (
+              <>
+                <button onClick={ () => setModalState(true) }>Add Response</button>
+                <ResponseModal show={showModal} handleClose={ () => setModalState(false) } />
+              </>
+            )
+          }
         </div>
       </div>
     </div>

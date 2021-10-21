@@ -5,7 +5,7 @@ import ResponseModal from "./ResponseModal"
 
 const ReviewDetail = () => {
   const data = JSON.parse(localStorage.getItem("selectedReview"))
-  console.log(JSON.parse(localStorage.getItem("selectedReview")))
+  
   const { 
     id,
     author, 
@@ -17,7 +17,7 @@ const ReviewDetail = () => {
 
   return (
     <>
-      <ReviewCard style={{width: 100}} reviewData={data}/>
+      <ReviewCard style={{width: 100}} reviewData={data} showResponseButton={true}/>
       <Responsecard/>
       <ResponseModal/>
     </>
