@@ -6,7 +6,7 @@ import ResponseModal from './ResponseModal'
 import starIcon from '../star.png'
 
 
-const ReviewCard = ({ reviewData, showResponseButton }) => {
+const ReviewCard = ({ reviewData, showResponseButton, modalFuncy }) => {
   const { 
     id,
     author, 
@@ -16,7 +16,12 @@ const ReviewCard = ({ reviewData, showResponseButton }) => {
     rating 
   } = reviewData
 
-  const [showModal, setModalState] = useState(false)
+  // const [showModal, setModalState] = useState(false)
+  // const [response, setResponse] = useState({})
+
+  // const submitResponse = res => {
+  //   setResponse(res)
+  // }
 
   const history = useHistory()
   const handleOnClick = () => {
@@ -49,8 +54,8 @@ const ReviewCard = ({ reviewData, showResponseButton }) => {
           {
             showResponseButton && (
               <>
-                <button onClick={ () => setModalState(true) }>Add Response</button>
-                <ResponseModal show={showModal} handleClose={ () => setModalState(false) } />
+                <button onClick={ () => modalFuncy() }>Add Response</button>
+                {/* <ResponseModal show={showModal} handleClose={ () => setModalState(false)  } submitResponse={submitResponse} /> */}
               </>
             )
           }

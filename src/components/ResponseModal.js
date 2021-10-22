@@ -1,12 +1,18 @@
 import { useState } from 'react'
 
-const ResponseModal = ({ handleClose, show, children }) => {
-  const [name, setName] = useState("")
-  const [content, setContent] = useState("")
-
-  const handleSubmit = (event) => {
+const ResponseModal = ({ responseData ,handleClose, show, children, submitResponse }) => {
+  const [name, setName] = useState(responseData.name || "")
+  const [content, setContent] = useState(responseData.content || "")
+  console.log(responseData)
+  const handleSubmit = event => {
     event.preventDefault()
-    console.log(name, content)
+    submitResponse({
+      name,
+      content,
+      published_at: new Date().toLocaleDateString('en-US')
+    })
+    handleClose()
+    //console.log(name, content, Date.now())
   }
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
